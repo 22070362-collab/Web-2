@@ -135,3 +135,4 @@ define('DB_PASS', ''); // mật khẩu MySQL
 # Chạy mỗi ngày lúc 9:00 sáng
 0 9 * * * /usr/bin/php /Applications/XAMPP/xamppfiles/htdocs/web2book/backend/cron/send_reminders.php
 ```
+# WEB-2
