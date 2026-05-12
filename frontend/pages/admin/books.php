@@ -54,13 +54,13 @@ $stats = $bookController->stats();
             <i class="fas fa-book"></i>
         </div>
         <div>
-            <h1 class="page-header-title">Books</h1>
-            <p class="page-header-subtitle">Manage your book inventory</p>
+            <h1 class="page-header-title">Sách</h1>
+            <p class="page-header-subtitle">Quản lý kho sách</p>
         </div>
     </div>
     <div>
         <a href="index.php" class="btn btn-outline btn-sm">
-            <i class="fas fa-arrow-left"></i> Back to Dashboard
+            <i class="fas fa-arrow-left"></i> Quay về Bảng Điều Khiển
         </a>
     </div>
 </div>
@@ -74,7 +74,7 @@ $stats = $bookController->stats();
             </div>
         </div>
         <div class="stat-card-value"><?php echo $stats['total_books']; ?></div>
-        <div class="stat-card-label">Total Books</div>
+        <div class="stat-card-label">Tổng Sách</div>
     </div>
     
     <div class="stat-card-admin">
@@ -84,7 +84,7 @@ $stats = $bookController->stats();
             </div>
         </div>
         <div class="stat-card-value"><?php echo $stats['available_books']; ?></div>
-        <div class="stat-card-label">Available</div>
+        <div class="stat-card-label">Còn Hàng</div>
     </div>
     
     <div class="stat-card-admin">
@@ -94,7 +94,7 @@ $stats = $bookController->stats();
             </div>
         </div>
         <div class="stat-card-value"><?php echo count($categories); ?></div>
-        <div class="stat-card-label">Categories</div>
+        <div class="stat-card-label">Danh Mục</div>
     </div>
 </div>
 
@@ -109,9 +109,9 @@ $stats = $bookController->stats();
 <!-- Books Table -->
 <div class="dashboard-card">
     <div class="dashboard-card-header">
-        <h3 class="dashboard-card-title">All Books (<?php echo count($books); ?>)</h3>
+        <h3 class="dashboard-card-title">Tất Cả Sách (<?php echo count($books); ?>)</h3>
         <a href="?action=add" class="btn btn-primary btn-sm">
-            <i class="fas fa-plus"></i> Add New Book
+            <i class="fas fa-plus"></i> Thêm Sách Mới
         </a>
     </div>
     
@@ -119,23 +119,23 @@ $stats = $bookController->stats();
     <!-- Add Book Form -->
     <div class="dashboard-card-body" style="background: var(--bg-secondary);">
         <h4 style="margin-bottom: 20px; color: var(--text-primary);">
-            <i class="fas fa-plus-circle" style="color: var(--green-primary);"></i> Add New Book
+            <i class="fas fa-plus-circle" style="color: var(--green-primary);"></i> Thêm Sách Mới
         </h4>
         <form method="POST">
             <input type="hidden" name="action" value="add">
             <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 16px;">
                 <div class="form-group">
-                    <label>Title *</label>
-                    <input type="text" name="title" class="form-control" required placeholder="Enter book title">
+                    <label>Tiêu đề *</label>
+                    <input type="text" name="title" class="form-control" required placeholder="Nhập tiêu đề sách">
                 </div>
                 <div class="form-group">
-                    <label>Author *</label>
-                    <input type="text" name="author" class="form-control" required placeholder="Enter author name">
+                    <label>Tác giả *</label>
+                    <input type="text" name="author" class="form-control" required placeholder="Nhập tên tác giả">
                 </div>
             </div>
             <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 16px;">
                 <div class="form-group">
-                    <label>Category *</label>
+                    <label>Thể loại *</label>
                     <select name="category" class="form-control" required>
                         <?php foreach ($categories as $cat): ?>
                         <option value="<?php echo htmlspecialchars($cat); ?>"><?php echo htmlspecialchars($cat); ?></option>
@@ -144,21 +144,21 @@ $stats = $bookController->stats();
                     </select>
                 </div>
                 <div class="form-group">
-                    <label>New Category</label>
-                    <input type="text" name="new_category" class="form-control" placeholder="Enter new category name">
+                    <label>Thêm thể loại mới</label>
+                    <input type="text" name="new_category" class="form-control" placeholder="Nhập tên thể loại mới">
                 </div>
             </div>
             <div class="form-group">
-                <label>Description</label>
-                <textarea name="description" class="form-control" rows="3" placeholder="Enter book description"></textarea>
+                <label>Mô tả</label>
+                <textarea name="description" class="form-control" rows="3" placeholder="Nhập mô tả sách"></textarea>
             </div>
             <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 16px;">
                 <div class="form-group">
-                    <label>Quantity *</label>
+                    <label>Số lượng *</label>
                     <input type="number" name="quantity" class="form-control" min="0" value="1" required>
                 </div>
                 <div class="form-group">
-                    <label>Price per Day (VND) *</label>
+                    <label>Giá/ngày (VND) *</label>
                     <input type="number" name="price_per_day" class="form-control" min="0" step="1000" value="10000" required>
                 </div>
             </div>
@@ -166,7 +166,7 @@ $stats = $bookController->stats();
                 <button type="submit" class="btn btn-primary">
                     <i class="fas fa-save"></i> Save Book
                 </button>
-                <a href="books.php" class="btn btn-outline">Cancel</a>
+                <a href="books.php" class="btn btn-outline">Hủy</a>
             </div>
         </form>
     </div>
@@ -180,7 +180,7 @@ $stats = $bookController->stats();
     ?>
     <div class="dashboard-card-body" style="background: var(--bg-secondary);">
         <h4 style="margin-bottom: 20px; color: var(--text-primary);">
-            <i class="fas fa-edit" style="color: var(--accent);"></i> Edit Book
+            <i class="fas fa-edit" style="color: var(--accent);"></i> Chỉnh Sửa Sách
         </h4>
         <form method="POST">
             <input type="hidden" name="action" value="update">
@@ -219,9 +219,9 @@ $stats = $bookController->stats();
             </div>
             <div style="display: flex; gap: 12px; margin-top: 8px;">
                 <button type="submit" class="btn btn-primary">
-                    <i class="fas fa-save"></i> Save Changes
+                    <i class="fas fa-save"></i> Lưu Thay Đổi
                 </button>
-                <a href="books.php" class="btn btn-outline">Cancel</a>
+                <a href="books.php" class="btn btn-outline">Hủy</a>
             </div>
         </form>
     </div>
@@ -234,11 +234,11 @@ $stats = $bookController->stats();
             <thead>
                 <tr>
                     <th>#</th>
-                    <th>Book</th>
-                    <th>Category</th>
-                    <th>Price/Day</th>
-                    <th>Stock</th>
-                    <th>Actions</th>
+                    <th>Sách</th>
+                    <th>Thể loại</th>
+                    <th>Giá/ngày</th>
+                    <th>Số lượng</th>
+                    <th>Hành động</th>
                 </tr>
             </thead>
             <tbody>
@@ -266,7 +266,7 @@ $stats = $bookController->stats();
                         <?php if ($book['quantity'] > 0): ?>
                         <span class="badge badge-success"><?php echo $book['quantity']; ?></span>
                         <?php else: ?>
-                        <span class="badge badge-danger">Out of Stock</span>
+                        <span class="badge badge-danger">Hết hàng</span>
                         <?php endif; ?>
                     </td>
                     <td>
@@ -277,7 +277,7 @@ $stats = $bookController->stats();
                             <form method="POST" style="display: inline;">
                                 <input type="hidden" name="action" value="delete">
                                 <input type="hidden" name="id" value="<?php echo $book['id']; ?>">
-                                <button type="submit" class="btn btn-icon btn-danger" onclick="return confirm('Delete this book?')">
+                                <button type="submit" class="btn btn-icon btn-danger" onclick="return confirm('Bạn có chắc muốn xóa sách này?')">
                                     <i class="fas fa-trash"></i>
                                 </button>
                             </form>
@@ -290,7 +290,7 @@ $stats = $bookController->stats();
         <?php else: ?>
         <div style="text-align: center; padding: 60px 20px;">
             <i class="fas fa-book-open" style="font-size: 3rem; color: var(--text-muted); margin-bottom: 16px;"></i>
-            <p style="color: var(--text-muted);">No books found. Add your first book!</p>
+            <p style="color: var(--text-muted);">Chưa tìm thấy sách. Thêm sách đầu tiên!</p>
         </div>
         <?php endif; ?>
     </div>
