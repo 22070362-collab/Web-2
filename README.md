@@ -1,5 +1,4 @@
 # MÂY MƠ BOOK - Online Book Rental Platform
-
 ## Giới thiệu
 Website cho thuê sách trực tuyến - cho phép người dùng tìm kiếm, thuê sách theo ngày và quản lý quá trình trả sách.
 

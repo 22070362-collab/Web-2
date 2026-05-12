@@ -80,7 +80,7 @@ $cartTotal = $cartModel->getTotal();
                     </div>
                     <div class="cart-item-details">
                         <h3 class="cart-item-title"><?php echo htmlspecialchars((string)($item['title'] ?? '')); ?></h3>
-                        <p class="cart-item-author">by <?php echo htmlspecialchars((string)($item['author'] ?? '')); ?></p>
+                        <p class="cart-item-author">Tác giả: <?php echo htmlspecialchars((string)($item['author'] ?? '')); ?></p>
                         <span class="book-category"><?php echo htmlspecialchars((string)($item['category'] ?? '')); ?></span>
                     </div>
                     <div class="cart-item-meta">
