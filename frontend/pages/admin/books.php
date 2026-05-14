@@ -140,7 +140,7 @@ $stats = $bookController->stats();
                         <?php foreach ($categories as $cat): ?>
                         <option value="<?php echo htmlspecialchars($cat); ?>"><?php echo htmlspecialchars($cat); ?></option>
                         <?php endforeach; ?>
-                        <option value="__new__">+ Add New Category</option>
+                        <option value="__new__">+ Thêm thể loại mới</option>
                     </select>
                 </div>
                 <div class="form-group">
@@ -162,9 +162,9 @@ $stats = $bookController->stats();
                     <input type="number" name="price_per_day" class="form-control" min="0" step="1000" value="10000" required>
                 </div>
             </div>
-            <div style="display: flex; gap: 12px; margin-top: 8px;">
+                <div style="display: flex; gap: 12px; margin-top: 8px;">
                 <button type="submit" class="btn btn-primary">
-                    <i class="fas fa-save"></i> Save Book
+                    <i class="fas fa-save"></i> Lưu sách
                 </button>
                 <a href="books.php" class="btn btn-outline">Hủy</a>
             </div>
