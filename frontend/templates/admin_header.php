@@ -62,7 +62,7 @@ $currentDir = basename(dirname($_SERVER['PHP_SELF']));
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title><?php echo isset($pageTitle) ? htmlspecialchars($pageTitle) . ' - ' : ''; ?>Quản Trị - MÂY MƠ BOOK</title>
+    <title><?php echo isset($pageTitle) ? htmlspecialchars($pageTitle) . ' - ' : ''; ?>Admin - BookRent</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="stylesheet" href="../../assets/css/admin.css">
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
@@ -84,7 +84,7 @@ $currentDir = basename(dirname($_SERVER['PHP_SELF']));
                 <span class="sidebar-nav-label">Quản lý chính</span>
                 <a href="index.php" class="sidebar-nav-item <?php echo $currentPage == 'index.php' ? 'active' : ''; ?>">
                     <i class="fas fa-chart-pie"></i>
-                    <span>Bảng Điều Khiển</span>
+                    <span>Dashboard</span>
                 </a>
                 <a href="books.php" class="sidebar-nav-item <?php echo $currentPage == 'books.php' ? 'active' : ''; ?>">
                     <i class="fas fa-book"></i>
@@ -249,7 +249,7 @@ $currentDir = basename(dirname($_SERVER['PHP_SELF']));
                     </div>
                     <div class="topbar-profile-info">
                         <span class="topbar-profile-name"><?php echo htmlspecialchars($user['full_name'] ?? 'Admin'); ?></span>
-                        <span class="topbar-profile-role">Quản trị viên</span>
+                        <span class="topbar-profile-role">Admin</span>
                     </div>
                 </div>
             </div>

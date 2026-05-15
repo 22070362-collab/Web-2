@@ -1,7 +1,7 @@
 <?php
 require_once __DIR__ . '/../../templates/admin_header.php';
 
-$pageTitle = 'Cài đặt';
+$pageTitle = 'Settings';
 ?>
 
 <!-- Page Header -->
@@ -11,7 +11,7 @@ $pageTitle = 'Cài đặt';
             <i class="fas fa-cog"></i>
         </div>
         <div>
-            <h1 class="page-header-title">Cài đặt</h1>
+            <h1 class="page-header-title">Settings</h1>
             <p class="page-header-subtitle">Quản lý cài đặt hệ thống</p>
         </div>
     </div>
@@ -24,7 +24,7 @@ $pageTitle = 'Cài đặt';
     <div class="dashboard-card">
         <div class="dashboard-card-header">
             <h3 class="dashboard-card-title">
-                <i class="fas fa-cog"></i> Cài đặt chung
+                <i class="fas fa-cog"></i> General Settings
             </h3>
         </div>
         <div class="dashboard-card-body">
@@ -54,7 +54,7 @@ $pageTitle = 'Cài đặt';
                 </div>
 
                 <div class="settings-section">
-                    <h4 class="settings-section-title">Cài đặt thuê sách</h4>
+                    <h4 class="settings-section-title">Rental Settings</h4>
                     <div class="form-row">
                         <div class="form-group">
                             <label>Số Ngày Thuê Tối Đa</label>
@@ -82,7 +82,7 @@ $pageTitle = 'Cài đặt';
                 </div>
 
                 <div class="settings-section">
-                    <h4 class="settings-section-title">Cài đặt vận chuyển</h4>
+                    <h4 class="settings-section-title">Shipping Settings</h4>
                     <div class="form-row">
                         <div class="form-group">
                             <label>Phí Ship Miễn Phí (VNĐ)</label>
@@ -99,10 +99,10 @@ $pageTitle = 'Cài đặt';
 
                 <div class="form-actions">
                     <button type="button" class="btn btn-outline">
-                        <i class="fas fa-undo"></i> Đặt lại
+                        <i class="fas fa-undo"></i> Reset
                     </button>
                     <button type="submit" class="btn btn-primary">
-                        <i class="fas fa-save"></i> Lưu thay đổi
+                        <i class="fas fa-save"></i> Save Changes
                     </button>
                 </div>
             </form>
@@ -153,27 +153,27 @@ $pageTitle = 'Cài đặt';
         <div class="dashboard-card">
             <div class="dashboard-card-header">
                 <h3 class="dashboard-card-title">
-                        <i class="fas fa-server"></i> Trạng thái hệ thống
-                    </h3>
+                    <i class="fas fa-server"></i> System Status
+                </h3>
             </div>
             <div class="dashboard-card-body">
                 <div class="status-list">
                     <div class="status-item">
                         <div class="status-info">
                             <i class="fas fa-database"></i>
-                            <span>Cơ sở dữ liệu</span>
+                            <span>Database</span>
                         </div>
-                            <span class="badge badge-success">
-                            <i class="fas fa-check-circle"></i> Hoạt động
+                        <span class="badge badge-success">
+                            <i class="fas fa-check-circle"></i> Online
                         </span>
                     </div>
                     <div class="status-item">
                         <div class="status-info">
                             <i class="fas fa-server"></i>
-                            <span>Máy chủ</span>
+                            <span>Server</span>
                         </div>
                         <span class="badge badge-success">
-                            <i class="fas fa-check-circle"></i> Đang chạy
+                            <i class="fas fa-check-circle"></i> Running
                         </span>
                     </div>
                     <div class="status-item">
@@ -182,15 +182,15 @@ $pageTitle = 'Cài đặt';
                             <span>SSL</span>
                         </div>
                         <span class="badge badge-success">
-                            <i class="fas fa-check-circle"></i> Hoạt động
+                            <i class="fas fa-check-circle"></i> Active
                         </span>
                     </div>
                     <div class="status-item">
                         <div class="status-info">
                             <i class="fas fa-clock"></i>
-                            <span>Sao lưu gần nhất</span>
+                            <span>Last Backup</span>
                         </div>
-                        <span class="badge badge-info">Vừa xong</span>
+                        <span class="badge badge-info">Just now</span>
                     </div>
                 </div>
             </div>
