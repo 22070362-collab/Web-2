@@ -2,11 +2,7 @@
 require_once __DIR__ . '/../templates/header.php';
 
 if ($isLoggedIn) {
-    if ($isAdmin) {
-        header('Location: admin/index.php');
-    } else {
-        header('Location: dashboard.php');
-    }
+    header('Location: index.php');
     exit;
 }
 
@@ -94,7 +90,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         
         <div style="margin-top: 24px; padding-top: 20px; border-top: 1px solid var(--border-color); text-align: center; font-size: 0.85rem; color: var(--text-muted);">
             <p style="margin-bottom: 8px;">Tài Khoản Demo:</p>
-            <p style="margin: 0;">Admin: admin / admin123<br>User: user1 / user123</p>
+            <p style="margin: 0;">Admin: admin / admin123<br>User: hung / password123</p>
         </div>
     </div>
 </section>
