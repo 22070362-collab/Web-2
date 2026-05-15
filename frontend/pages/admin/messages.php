@@ -1,7 +1,7 @@
 <?php
 require_once __DIR__ . '/../../templates/admin_header.php';
 
-$pageTitle = 'Tin Nhắn';
+$pageTitle = 'Messages';
 $adminUserId = $_SESSION['user_id'] ?? null;
 
 // Handle actions
@@ -58,7 +58,6 @@ require_once __DIR__ . '/../../../backend/models/User.php';
 $userModel = new User();
 $allUsers = $userModel->getAll(100);
 $users = array_filter($allUsers, function($u) { return ($u['role'] ?? 'user') !== 'admin'; });
-$selectedUserId = intval($_POST['user_id'] ?? 0);
 
 // Current tab
 $currentTab = $_GET['tab'] ?? 'inbox';
@@ -75,7 +74,7 @@ $currentTab = $_GET['tab'] ?? 'inbox';
             </div>
             <div class="stat-info">
                 <span class="stat-value"><?php echo count($allMessages); ?></span>
-                <span class="stat-label">Tổng tin nhắn</span>
+                <span class="stat-label">Total Messages</span>
             </div>
         </div>
         <div class="stat-card">
@@ -84,7 +83,7 @@ $currentTab = $_GET['tab'] ?? 'inbox';
             </div>
             <div class="stat-info">
                 <span class="stat-value"><?php echo $unreadCount; ?></span>
-                <span class="stat-label">Chưa đọc</span>
+                <span class="stat-label">Unread</span>
             </div>
         </div>
         <div class="stat-card">
@@ -93,7 +92,7 @@ $currentTab = $_GET['tab'] ?? 'inbox';
             </div>
             <div class="stat-info">
                 <span class="stat-value"><?php echo count($userMessages); ?></span>
-                <span class="stat-label">Tin nhắn từ user</span>
+                <span class="stat-label">User Messages</span>
             </div>
         </div>
         <div class="stat-card">
@@ -102,7 +101,7 @@ $currentTab = $_GET['tab'] ?? 'inbox';
             </div>
             <div class="stat-info">
                 <span class="stat-value"><?php echo count($adminSentMessages); ?></span>
-                <span class="stat-label">Đã gửi</span>
+                <span class="stat-label">Sent</span>
             </div>
         </div>
     </div>
@@ -116,18 +115,18 @@ $currentTab = $_GET['tab'] ?? 'inbox';
             <div class="messages-tabs">
                 <a href="messages.php?tab=inbox" class="tab-btn <?php echo $currentTab === 'inbox' ? 'active' : ''; ?>">
                     <i class="fas fa-inbox"></i>
-                    <span>Hộp thư đến</span>
+                    <span>Inbox</span>
                     <?php if ($unreadCount > 0): ?>
                     <span class="tab-badge"><?php echo $unreadCount; ?></span>
                     <?php endif; ?>
                 </a>
                 <a href="messages.php?tab=sent" class="tab-btn <?php echo $currentTab === 'sent' ? 'active' : ''; ?>">
                     <i class="fas fa-paper-plane"></i>
-                    <span>Đã gửi</span>
+                    <span>Sent</span>
                 </a>
                 <a href="messages.php?tab=system" class="tab-btn <?php echo $currentTab === 'system' ? 'active' : ''; ?>">
                     <i class="fas fa-bell"></i>
-                    <span>Hệ thống</span>
+                    <span>System</span>
                 </a>
             </div>
             
@@ -138,7 +137,7 @@ $currentTab = $_GET['tab'] ?? 'inbox';
                     <input type="hidden" name="action" value="mark_read">
                     <button type="submit" class="toolbar-btn">
                         <i class="fas fa-check-double"></i>
-                        <span>Đánh dấu tất cả đã đọc</span>
+                        <span>Mark all as read</span>
                     </button>
                 </form>
                 <?php endif; ?>
@@ -180,15 +179,15 @@ $currentTab = $_GET['tab'] ?? 'inbox';
                             <div class="message-top-row">
                                 <span class="message-sender-name">
                                     <?php 
-                                    if ($msg['type'] === 'system') echo 'Hệ thống';
-                                    elseif ($msg['type'] === 'admin_to_user') echo 'Gửi: ' . htmlspecialchars($msg['receiver_name'] ?? 'User');
-                                    else echo htmlspecialchars($msg['sender_name'] ?? 'Người dùng');
+                                    if ($msg['type'] === 'system') echo 'System';
+                                    elseif ($msg['type'] === 'admin_to_user') echo 'Sent to: ' . htmlspecialchars($msg['receiver_name'] ?? 'User');
+                                    else echo htmlspecialchars($msg['sender_name'] ?? 'User');
                                     ?>
                                 </span>
-                                <span class="message-time"><?php echo timeAgo($msg['created_at']); ?></span>
+                                <span class="message-time"><?php echo adminTimeAgo($msg['created_at']); ?></span>
                             </div>
                             <div class="message-subject">
-                                <?php echo htmlspecialchars($msg['subject'] ?: '(Không có tiêu đề)'); ?>
+                                <?php echo htmlspecialchars($msg['subject'] ?: '(No subject)'); ?>
                             </div>
                             <div class="message-preview">
                                 <?php echo htmlspecialchars(mb_substr($msg['content'], 0, 100)); ?>...
@@ -204,8 +203,8 @@ $currentTab = $_GET['tab'] ?? 'inbox';
                         <div class="empty-icon">
                             <i class="fas fa-inbox"></i>
                         </div>
-                        <h3>Không có tin nhắn</h3>
-                        <p>Không có tin nhắn nào trong mục này.</p>
+                        <h3>No messages</h3>
+                        <p>There are no messages in this folder.</p>
                     </div>
                 <?php endif; ?>
             </div>
@@ -217,13 +216,13 @@ $currentTab = $_GET['tab'] ?? 'inbox';
             <div class="detail-header-bar">
                 <button class="back-button" onclick="window.location.href='messages.php?tab=<?php echo $currentTab; ?>'">
                     <i class="fas fa-arrow-left"></i>
-                    <span>Quay lại</span>
+                    <span>Back</span>
                 </button>
                 <div class="detail-actions">
                     <form method="POST" class="delete-form-inline">
                         <input type="hidden" name="action" value="delete">
                         <input type="hidden" name="message_id" value="<?php echo $viewMessage['id']; ?>">
-                        <button type="submit" class="action-btn-delete" onclick="return confirm('Xóa tin nhắn này?')">
+                        <button type="submit" class="action-btn-delete" onclick="return confirm('Delete this message?')">
                             <i class="fas fa-trash"></i>
                         </button>
                     </form>
@@ -232,7 +231,7 @@ $currentTab = $_GET['tab'] ?? 'inbox';
             
             <div class="detail-content-area">
                 <div class="detail-subject-bar">
-                    <h2><?php echo htmlspecialchars($viewMessage['subject'] ?: '(Không có tiêu đề)'); ?></h2>
+                    <h2><?php echo htmlspecialchars($viewMessage['subject'] ?: '(No subject)'); ?></h2>
                 </div>
                 
                 <div class="detail-meta-bar">
@@ -242,8 +241,8 @@ $currentTab = $_GET['tab'] ?? 'inbox';
                             <i class="fas fa-paper-plane"></i>
                         </div>
                         <div class="sender-info-text">
-                            <span class="sender-name-lg">Gửi đến: <?php echo htmlspecialchars($viewMessage['receiver_name'] ?? 'Người dùng'); ?></span>
-                            <span class="sender-email-lg">Tin nhắn đã gửi</span>
+                            <span class="sender-name-lg">Sent to: <?php echo htmlspecialchars($viewMessage['receiver_name'] ?? 'User'); ?></span>
+                            <span class="sender-email-lg">Sent message</span>
                         </div>
                         <?php elseif ($viewMessage['sender_name']): ?>
                         <div class="sender-avatar-lg user">
@@ -258,8 +257,8 @@ $currentTab = $_GET['tab'] ?? 'inbox';
                             <i class="fas fa-bell"></i>
                         </div>
                         <div class="sender-info-text">
-                            <span class="sender-name-lg">Hệ thống</span>
-                            <span class="sender-email-lg">Tin tự động</span>
+                            <span class="sender-name-lg">System</span>
+                            <span class="sender-email-lg">Auto message</span>
                         </div>
                         <?php endif; ?>
                     </div>
@@ -275,42 +274,42 @@ $currentTab = $_GET['tab'] ?? 'inbox';
                 
                 <?php if ($viewMessage['type'] === 'user_to_admin'): ?>
                 <div class="reply-section">
-                    <button class="reply-btn" onclick='showReplyForm(<?php echo intval($viewMessage["sender_id"] ?? 0); ?>, <?php echo json_encode((string)($viewMessage["sender_name"] ?? "Người dùng"), JSON_UNESCAPED_UNICODE); ?>)'>
+                    <button class="reply-btn" onclick="showReplyForm(<?php echo $viewMessage['sender_id']; ?>, '<?php echo htmlspecialchars($viewMessage['sender_name']); ?>')">
                         <i class="fas fa-reply"></i>
-                        Trả lời <?php echo htmlspecialchars($viewMessage['sender_name']); ?>
+                        Reply to <?php echo htmlspecialchars($viewMessage['sender_name']); ?>
                     </button>
                 </div>
                 
                 <!-- Reply Form (Hidden by default) -->
                 <div class="reply-form-panel" id="replyFormPanel">
-                    <h4><i class="fas fa-reply"></i> Trả lời tin nhắn</h4>
+                    <h4><i class="fas fa-reply"></i> Reply to Message</h4>
                     <form method="POST">
                         <input type="hidden" name="action" value="reply">
                         <input type="hidden" name="user_id" id="replyUserIdField">
                         
                         <div class="form-group">
-                            <label><i class="fas fa-user"></i> Người nhận</label>
+                            <label><i class="fas fa-user"></i> Recipient</label>
                             <input type="text" id="replyUserNameField" class="form-control" readonly>
                         </div>
                         
                         <div class="form-group">
-                            <label><i class="fas fa-heading"></i> Tiêu đề</label>
+                            <label><i class="fas fa-heading"></i> Subject</label>
                             <input type="text" name="subject" class="form-control" 
-                                   placeholder="Nhập tiêu đề..." required>
+                                   placeholder="Enter subject..." required>
                         </div>
                         
                         <div class="form-group">
-                            <label><i class="fas fa-comment"></i> Nội dung</label>
+                            <label><i class="fas fa-comment"></i> Content</label>
                             <textarea name="content" class="form-control" rows="5" 
-                                      placeholder="Nhập nội dung trả lời..." required></textarea>
+                                      placeholder="Enter reply content..." required></textarea>
                         </div>
                         
                         <div class="form-actions">
                             <button type="button" class="btn-cancel" onclick="hideReplyForm()">
-                                <i class="fas fa-times"></i> Hủy
+                                <i class="fas fa-times"></i> Cancel
                             </button>
                             <button type="submit" class="btn-send">
-                                <i class="fas fa-paper-plane"></i> Gửi
+                                <i class="fas fa-paper-plane"></i> Send
                             </button>
                         </div>
                     </form>
@@ -325,20 +324,20 @@ $currentTab = $_GET['tab'] ?? 'inbox';
             <div class="sidebar-card">
                 <h3 class="card-title">
                     <i class="fas fa-paper-plane"></i>
-                    Gửi Thông Báo
+                    Send Notification
                 </h3>
                 
                 <?php if (isset($_SESSION['success'])): ?>
                 <div class="alert alert-success">
                     <i class="fas fa-check-circle"></i>
-                    <?php echo $_SESSION['success']; unset($_SESSION['success']); ?>
+                    <?php echo htmlspecialchars(adminUiMessage($_SESSION['success'])); unset($_SESSION['success']); ?>
                 </div>
                 <?php endif; ?>
                 
                 <?php if (isset($_SESSION['error'])): ?>
                 <div class="alert alert-danger">
                     <i class="fas fa-exclamation-circle"></i>
-                    <?php echo $_SESSION['error']; unset($_SESSION['error']); ?>
+                    <?php echo htmlspecialchars(adminUiMessage($_SESSION['error'])); unset($_SESSION['error']); ?>
                 </div>
                 <?php endif; ?>
                 
@@ -346,12 +345,11 @@ $currentTab = $_GET['tab'] ?? 'inbox';
                     <input type="hidden" name="action" value="reply">
                     
                     <div class="form-group">
-                        <label><i class="fas fa-user"></i> Người dùng</label>
-                        <input type="text" id="userSearch" class="form-control" placeholder="Tìm theo tên hoặc username..." style="margin-bottom:8px;">
+                        <label><i class="fas fa-user"></i> User</label>
                         <select name="user_id" class="form-control" required>
-                            <option value="">-- Chọn người dùng --</option>
+                            <option value="">-- Select user --</option>
                             <?php foreach ($users as $u): ?>
-                            <option value="<?php echo $u['id']; ?>" data-search="<?php echo htmlspecialchars(strtolower(($u['full_name'] ?? '') . ' ' . ($u['username'] ?? ''))); ?>" <?php echo $selectedUserId === intval($u['id']) ? 'selected' : ''; ?>>
+                            <option value="<?php echo $u['id']; ?>">
                                 <?php echo htmlspecialchars($u['full_name']); ?> (<?php echo htmlspecialchars($u['username']); ?>)
                             </option>
                             <?php endforeach; ?>
@@ -359,17 +357,17 @@ $currentTab = $_GET['tab'] ?? 'inbox';
                     </div>
                     
                     <div class="form-group">
-                        <label><i class="fas fa-heading"></i> Tiêu đề</label>
-                        <input type="text" name="subject" class="form-control" placeholder="Nhập tiêu đề..." required>
+                        <label><i class="fas fa-heading"></i> Subject</label>
+                        <input type="text" name="subject" class="form-control" placeholder="Enter subject..." required>
                     </div>
                     
                     <div class="form-group">
-                        <label><i class="fas fa-comment"></i> Nội dung</label>
-                        <textarea name="content" class="form-control" rows="4" placeholder="Nhập nội dung..." required></textarea>
+                        <label><i class="fas fa-comment"></i> Content</label>
+                        <textarea name="content" class="form-control" rows="4" placeholder="Enter content..." required></textarea>
                     </div>
                     
                     <button type="submit" class="btn-send-full">
-                        <i class="fas fa-paper-plane"></i> Gửi tin nhắn
+                        <i class="fas fa-paper-plane"></i> Send Message
                     </button>
                 </form>
             </div>
@@ -377,12 +375,12 @@ $currentTab = $_GET['tab'] ?? 'inbox';
             <div class="sidebar-card tips-card">
                 <h3 class="card-title">
                     <i class="fas fa-lightbulb"></i>
-                    Mẹo
+                    Tips
                 </h3>
                 <ul class="tips-list">
-                    <li>Sử dụng tin nhắn để thông báo cho người dùng về đơn hàng</li>
-                    <li>Có thể gửi thông báo hệ thống tự động</li>
-                    <li>Tin nhắn chưa đọc sẽ hiển thị badge đỏ</li>
+                    <li>Use messages to notify users about orders</li>
+                    <li>System notifications can be sent automatically</li>
+                    <li>Unread messages show a red badge</li>
                 </ul>
             </div>
         </div>
@@ -398,19 +396,6 @@ function showReplyForm(userId, userName) {
 
 function hideReplyForm() {
     document.getElementById('replyFormPanel').style.display = 'none';
-}
-
-const userSearchInput = document.getElementById('userSearch');
-const userSelect = document.querySelector('select[name="user_id"]');
-if (userSearchInput && userSelect) {
-    userSearchInput.addEventListener('input', function () {
-        const q = (this.value || '').toLowerCase().trim();
-        Array.from(userSelect.options).forEach((opt, idx) => {
-            if (idx === 0) return;
-            const hay = opt.getAttribute('data-search') || '';
-            opt.hidden = q !== '' && !hay.includes(q);
-        });
-    });
 }
 </script>
 
@@ -1002,7 +987,7 @@ if (userSearchInput && userSelect) {
 }
 
 .tips-list li::before {
-    content: '•';
+    content: '-';
     color: #667eea;
     font-weight: bold;
 }

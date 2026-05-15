@@ -33,13 +33,13 @@ $customerCount = count(array_filter($users, fn($u) => $u['role'] === 'user'));
             <i class="fas fa-users"></i>
         </div>
         <div>
-            <h1 class="page-header-title">Người dùng</h1>
-            <p class="page-header-subtitle">Quản lý người dùng hệ thống</p>
+            <h1 class="page-header-title">Users</h1>
+            <p class="page-header-subtitle">Manage system users</p>
         </div>
     </div>
     <div>
         <a href="index.php" class="btn btn-outline btn-sm">
-            <i class="fas fa-arrow-left"></i> Quay về Bảng Điều Khiển
+            <i class="fas fa-arrow-left"></i> Back to Dashboard
         </a>
     </div>
 </div>
@@ -53,7 +53,7 @@ $customerCount = count(array_filter($users, fn($u) => $u['role'] === 'user'));
             </div>
         </div>
         <div class="stat-card-value"><?php echo $totalUsers; ?></div>
-        <div class="stat-card-label">Tổng người dùng</div>
+        <div class="stat-card-label">Total Users</div>
     </div>
     
     <div class="stat-card-admin">
@@ -63,7 +63,7 @@ $customerCount = count(array_filter($users, fn($u) => $u['role'] === 'user'));
             </div>
         </div>
         <div class="stat-card-value"><?php echo $customerCount; ?></div>
-        <div class="stat-card-label">Khách hàng</div>
+        <div class="stat-card-label">Customers</div>
     </div>
     
     <div class="stat-card-admin">
@@ -73,7 +73,7 @@ $customerCount = count(array_filter($users, fn($u) => $u['role'] === 'user'));
             </div>
         </div>
         <div class="stat-card-value"><?php echo $adminCount; ?></div>
-        <div class="stat-card-label">Quản trị viên</div>
+        <div class="stat-card-label">Admins</div>
     </div>
 </div>
 
@@ -88,7 +88,7 @@ $customerCount = count(array_filter($users, fn($u) => $u['role'] === 'user'));
 <!-- Users Table -->
 <div class="dashboard-card">
     <div class="dashboard-card-header">
-        <h3 class="dashboard-card-title">Tất cả người dùng (<?php echo count($users); ?>)</h3>
+        <h3 class="dashboard-card-title">All Users (<?php echo count($users); ?>)</h3>
     </div>
     
     <div class="dashboard-card-body no-padding">
@@ -97,12 +97,12 @@ $customerCount = count(array_filter($users, fn($u) => $u['role'] === 'user'));
             <thead>
                 <tr>
                     <th>#</th>
-                    <th>Người dùng</th>
+                    <th>User</th>
                     <th>Email</th>
-                    <th>Số điện thoại</th>
-                    <th>Vai trò</th>
-                    <th>Ngày tham gia</th>
-                    <th>Hành động</th>
+                    <th>Phone</th>
+                    <th>Role</th>
+                    <th>Joined</th>
+                    <th>Actions</th>
                 </tr>
             </thead>
             <tbody>
@@ -125,11 +125,11 @@ $customerCount = count(array_filter($users, fn($u) => $u['role'] === 'user'));
                     <td>
                         <?php if ($user['role'] === 'admin'): ?>
                         <span class="badge badge-warning">
-                            <i class="fas fa-crown"></i> Quản trị viên
+                            <i class="fas fa-crown"></i> Admin
                         </span>
                         <?php else: ?>
                         <span class="badge badge-info">
-                            <i class="fas fa-user"></i> Khách hàng
+                            <i class="fas fa-user"></i> Customer
                         </span>
                         <?php endif; ?>
                     </td>
@@ -139,7 +139,7 @@ $customerCount = count(array_filter($users, fn($u) => $u['role'] === 'user'));
                         <form method="POST" style="display: inline;">
                             <input type="hidden" name="action" value="delete">
                             <input type="hidden" name="id" value="<?php echo $user['id']; ?>">
-                            <button type="submit" class="btn btn-icon btn-danger" onclick="return confirm('Bạn có chắc muốn xóa người dùng này? Hành động không thể hoàn tác.')">
+                            <button type="submit" class="btn btn-icon btn-danger" onclick="return confirm('Delete this user? This cannot be undone.')">
                                 <i class="fas fa-trash"></i>
                             </button>
                         </form>
@@ -152,9 +152,9 @@ $customerCount = count(array_filter($users, fn($u) => $u['role'] === 'user'));
             </tbody>
         </table>
         <?php else: ?>
-            <div style="text-align: center; padding: 60px 20px;">
+        <div style="text-align: center; padding: 60px 20px;">
             <i class="fas fa-users" style="font-size: 3rem; color: var(--text-muted); margin-bottom: 16px;"></i>
-            <p style="color: var(--text-muted);">Không tìm thấy người dùng.</p>
+            <p style="color: var(--text-muted);">No users found.</p>
         </div>
         <?php endif; ?>
     </div>

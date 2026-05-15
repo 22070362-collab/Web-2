@@ -47,13 +47,13 @@ foreach ($categories as $cat) {
             <i class="fas fa-chart-pie"></i>
         </div>
         <div>
-            <h1 class="page-header-title">Bảng Điều Khiển</h1>
-            <p class="page-header-subtitle">Chào mừng trở lại, <?php echo htmlspecialchars($_SESSION['full_name']); ?></p>
+            <h1 class="page-header-title">Dashboard</h1>
+            <p class="page-header-subtitle">Welcome back, <?php echo htmlspecialchars($_SESSION['full_name']); ?></p>
         </div>
     </div>
     <div>
         <a href="../index.php" class="btn btn-outline btn-sm">
-            <i class="fas fa-external-link-alt"></i> Xem Trang
+            <i class="fas fa-external-link-alt"></i> View Site
         </a>
     </div>
 </div>
@@ -70,7 +70,7 @@ foreach ($categories as $cat) {
             </div>
         </div>
         <div class="stat-card-value"><?php echo $bookStats['total_books']; ?></div>
-        <div class="stat-card-label">Tổng Sách</div>
+        <div class="stat-card-label">Total Books</div>
     </div>
     
     <div class="stat-card-admin">
@@ -83,7 +83,7 @@ foreach ($categories as $cat) {
             </div>
         </div>
         <div class="stat-card-value"><?php echo $rentalStats['active_rentals']; ?></div>
-        <div class="stat-card-label">Đang Thuê</div>
+        <div class="stat-card-label">Active Rentals</div>
     </div>
     
     <div class="stat-card-admin">
@@ -96,7 +96,7 @@ foreach ($categories as $cat) {
             </div>
         </div>
         <div class="stat-card-value"><?php echo $userCount; ?></div>
-        <div class="stat-card-label">Tổng Người Dùng</div>
+        <div class="stat-card-label">Total Users</div>
     </div>
     
     <div class="stat-card-admin">
@@ -109,7 +109,7 @@ foreach ($categories as $cat) {
             </div>
         </div>
         <div class="stat-card-value"><?php echo number_format($totalRevenue ?? 0, 0, ',', '.'); ?></div>
-        <div class="stat-card-label">Doanh Thu (VND)</div>
+        <div class="stat-card-label">Revenue (VND)</div>
     </div>
 </div>
 
@@ -118,11 +118,11 @@ foreach ($categories as $cat) {
     <!-- Chart Section -->
     <div class="dashboard-card">
         <div class="dashboard-card-header">
-            <h3 class="dashboard-card-title">Doanh Thu Theo Tháng</h3>
+            <h3 class="dashboard-card-title">Monthly Revenue</h3>
             <div class="dashboard-card-actions">
-                <button class="dashboard-card-btn active">Tháng</button>
-                <button class="dashboard-card-btn">Tuần</button>
-                <button class="dashboard-card-btn">Năm</button>
+                <button class="dashboard-card-btn active">Month</button>
+                <button class="dashboard-card-btn">Week</button>
+                <button class="dashboard-card-btn">Year</button>
             </div>
         </div>
         <div class="dashboard-card-body">
@@ -143,19 +143,19 @@ foreach ($categories as $cat) {
                 <div class="quick-actions">
                     <a href="books.php?action=add" class="quick-action-btn">
                         <i class="fas fa-plus-circle"></i>
-                        <span>Thêm Sách</span>
+                        <span>Add Book</span>
                     </a>
                     <a href="rentals.php?status=pending" class="quick-action-btn">
                         <i class="fas fa-clock"></i>
-                        <span>Chờ Xử Lý</span>
+                        <span>Pending</span>
                     </a>
                     <a href="rentals.php?status=overdue" class="quick-action-btn">
                         <i class="fas fa-exclamation-triangle"></i>
-                        <span>Quá Hạn</span>
+                        <span>Overdue</span>
                     </a>
                     <a href="users.php" class="quick-action-btn">
                         <i class="fas fa-user-plus"></i>
-                        <span>Người Dùng Mới</span>
+                        <span>New User</span>
                     </a>
                 </div>
             </div>
@@ -164,7 +164,7 @@ foreach ($categories as $cat) {
         <!-- Top Categories -->
         <div class="dashboard-card">
             <div class="dashboard-card-header">
-                <h3 class="dashboard-card-title">Danh Mục Hàng Đầu</h3>
+                <h3 class="dashboard-card-title">Top Categories</h3>
             </div>
             <div class="dashboard-card-body">
                 <div class="category-list">
@@ -189,7 +189,7 @@ foreach ($categories as $cat) {
                             </div>
                             <div>
                                 <div class="category-name"><?php echo htmlspecialchars($catName); ?></div>
-                                <div class="category-count"><?php echo $count; ?> cuốn</div>
+                                <div class="category-count"><?php echo $count; ?> books</div>
                             </div>
                         </div>
                         <div class="category-bar">
@@ -206,20 +206,20 @@ foreach ($categories as $cat) {
 <!-- Recent Orders -->
 <div class="dashboard-card" style="margin-top: 24px;">
     <div class="dashboard-card-header">
-        <h3 class="dashboard-card-title">Đơn Gần Đây</h3>
-        <a href="rentals.php" class="btn btn-outline btn-sm">Xem Tất Cả</a>
+        <h3 class="dashboard-card-title">Recent Orders</h3>
+        <a href="rentals.php" class="btn btn-outline btn-sm">View All</a>
     </div>
     <div class="dashboard-card-body no-padding">
         <?php if (count($recentRentals) > 0): ?>
         <table class="data-table">
             <thead>
                 <tr>
-                    <th>Khách Hàng</th>
-                    <th>Sách</th>
-                    <th>Ngày Thuê</th>
-                    <th>Hạn Trả</th>
-                    <th>Tổng</th>
-                    <th>Trạng Thái</th>
+                    <th>Customer</th>
+                    <th>Book</th>
+                    <th>Rental Date</th>
+                    <th>Due Date</th>
+                    <th>Total</th>
+                    <th>Status</th>
                 </tr>
             </thead>
             <tbody>
@@ -249,15 +249,15 @@ foreach ($categories as $cat) {
                     </td>
                     <td><?php echo date('d M, Y', strtotime($rental['rental_date'])); ?></td>
                     <td><?php echo date('d M, Y', strtotime($rental['due_date'])); ?></td>
-                    <td style="font-weight: 600; color: var(--green-primary);"><?php echo number_format($rental['total_price'], 0, ',', '.'); ?>đ</td>
+                    <td style="font-weight: 600; color: var(--green-primary);"><?php echo number_format($rental['total_price'], 0, ',', '.'); ?> VND</td>
                     <td>
                         <?php 
                         $statusMap = [
-                            'pending' => ['label' => 'Chờ xử lý', 'class' => 'badge-warning'],
-                                'active' => ['label' => 'Đang thuê', 'class' => 'badge-success'],
-                                'returned' => ['label' => 'Đã trả', 'class' => 'badge-secondary'],
-                                'overdue' => ['label' => 'Quá hạn', 'class' => 'badge-danger'],
-                                'cancelled' => ['label' => 'Đã hủy', 'class' => 'badge-secondary']
+                            'pending' => ['label' => 'Pending', 'class' => 'badge-warning'],
+                            'active' => ['label' => 'Active', 'class' => 'badge-success'],
+                            'returned' => ['label' => 'Returned', 'class' => 'badge-secondary'],
+                            'overdue' => ['label' => 'Overdue', 'class' => 'badge-danger'],
+                            'cancelled' => ['label' => 'Cancelled', 'class' => 'badge-secondary']
                         ];
                         $status = $statusMap[$rental['status']] ?? ['label' => $rental['status'], 'class' => 'badge-secondary'];
                         ?>
@@ -272,7 +272,7 @@ foreach ($categories as $cat) {
         <?php else: ?>
         <div style="text-align: center; padding: 60px 20px;">
             <i class="fas fa-inbox" style="font-size: 3rem; color: var(--text-muted); margin-bottom: 16px;"></i>
-            <p style="color: var(--text-muted);">Chưa có đơn thuê.</p>
+            <p style="color: var(--text-muted);">No rentals yet.</p>
         </div>
         <?php endif; ?>
     </div>
@@ -280,15 +280,15 @@ foreach ($categories as $cat) {
 
 <!-- Overdue Alert -->
 <?php if (count($overdueRentals) > 0): ?>
-    <div class="alert alert-danger" style="margin-top: 24px;">
+<div class="alert alert-danger" style="margin-top: 24px;">
     <i class="fas fa-exclamation-circle"></i>
     <div style="flex: 1;">
-        <strong>Cảnh báo! Có <?php echo count($overdueRentals); ?> đơn quá hạn.</strong>
+        <strong>Attention! <?php echo count($overdueRentals); ?> rentals are overdue.</strong>
         <span style="color: var(--text-muted); margin-left: 8px;">
-            Vui lòng liên hệ khách hàng để thu hồi sách.
+            Please contact customers to return books.
         </span>
         <a href="rentals.php?status=overdue" class="btn btn-danger btn-sm" style="margin-left: 16px;">
-            Xem đơn quá hạn
+            View Overdue
         </a>
     </div>
 </div>
@@ -308,7 +308,7 @@ document.addEventListener('DOMContentLoaded', function() {
         data: {
             labels: months,
             datasets: [{
-                label: 'Doanh thu',
+                label: 'Revenue',
                 data: revenueData,
                 borderColor: '#22c55e',
                 backgroundColor: 'rgba(34, 197, 94, 0.1)',
@@ -337,7 +337,7 @@ document.addEventListener('DOMContentLoaded', function() {
                     displayColors: false,
                     callbacks: {
                         label: function(context) {
-                            return context.parsed.y.toLocaleString('vi-VN') + 'đ';
+                            return context.parsed.y.toLocaleString('en-US') + ' VND';
                         }
                     }
                 }

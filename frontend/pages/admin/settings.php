@@ -1,7 +1,7 @@
 <?php
 require_once __DIR__ . '/../../templates/admin_header.php';
 
-$pageTitle = 'Cài đặt';
+$pageTitle = 'Settings';
 ?>
 
 <!-- Page Header -->
@@ -11,8 +11,8 @@ $pageTitle = 'Cài đặt';
             <i class="fas fa-cog"></i>
         </div>
         <div>
-            <h1 class="page-header-title">Cài đặt</h1>
-            <p class="page-header-subtitle">Quản lý cài đặt hệ thống</p>
+            <h1 class="page-header-title">Settings</h1>
+            <p class="page-header-subtitle">Manage system settings</p>
         </div>
     </div>
 </div>
@@ -24,85 +24,85 @@ $pageTitle = 'Cài đặt';
     <div class="dashboard-card">
         <div class="dashboard-card-header">
             <h3 class="dashboard-card-title">
-                <i class="fas fa-cog"></i> Cài đặt chung
+                <i class="fas fa-cog"></i> General Settings
             </h3>
         </div>
         <div class="dashboard-card-body">
             <form>
                 <div class="settings-section">
-                    <h4 class="settings-section-title">Thông Tin Cửa Hàng</h4>
+                    <h4 class="settings-section-title">Store Information</h4>
                     <div class="form-row">
                         <div class="form-group">
-                            <label>Tên Cửa Hàng</label>
-                            <input type="text" class="form-control" value="MÂY MƠ BOOK" placeholder="Tên cửa hàng">
+                            <label>Store Name</label>
+                            <input type="text" class="form-control" value="MAY MO BOOK" placeholder="Store name">
                         </div>
                         <div class="form-group">
-                            <label>Email Liên Hệ</label>
+                            <label>Contact Email</label>
                             <input type="email" class="form-control" value="contact@maymobook.vn" placeholder="Email">
                         </div>
                     </div>
                     <div class="form-row">
                         <div class="form-group">
-                            <label>Số Điện Thoại</label>
-                            <input type="tel" class="form-control" value="0123-456-789" placeholder="Số điện thoại">
+                            <label>Phone Number</label>
+                            <input type="tel" class="form-control" value="0123-456-789" placeholder="Phone number">
                         </div>
                         <div class="form-group">
-                            <label>Địa Chỉ</label>
-                            <input type="text" class="form-control" value="123 Đường ABC, TP.HCM" placeholder="Địa chỉ">
+                            <label>Address</label>
+                            <input type="text" class="form-control" value="123 ABC Street, Ho Chi Minh City" placeholder="Address">
                         </div>
                     </div>
                 </div>
 
                 <div class="settings-section">
-                    <h4 class="settings-section-title">Cài đặt thuê sách</h4>
+                    <h4 class="settings-section-title">Rental Settings</h4>
                     <div class="form-row">
                         <div class="form-group">
-                            <label>Số Ngày Thuê Tối Đa</label>
+                            <label>Maximum Rental Days</label>
                             <input type="number" class="form-control" value="30" min="1" max="365">
-                            <small class="form-text">Số ngày tối đa cho một lần thuê sách</small>
+                            <small class="form-text">Maximum days allowed for one rental</small>
                         </div>
                         <div class="form-group">
-                            <label>Số Sách Thuê Tối Đa</label>
+                            <label>Maximum Books per Rental</label>
                             <input type="number" class="form-control" value="5" min="1" max="20">
-                            <small class="form-text">Số sách tối đa một user có thể thuê</small>
+                            <small class="form-text">Maximum books a user can rent</small>
                         </div>
                     </div>
                     <div class="form-row">
                         <div class="form-group">
-                            <label>Phí Trễ Hạn (VNĐ/ngày)</label>
+                            <label>Late Fee (VND/day)</label>
                             <input type="number" class="form-control" value="5000" min="0">
-                            <small class="form-text">Phí phạt khi trả sách trễ hạn</small>
+                            <small class="form-text">Penalty fee for late returns</small>
                         </div>
                         <div class="form-group">
-                            <label>Tiền Đặt Cọc (VNĐ)</label>
+                            <label>Deposit (VND)</label>
                             <input type="number" class="form-control" value="50000" min="0">
-                            <small class="form-text">Tiền đặt cọc khi thuê sách</small>
+                            <small class="form-text">Deposit required when renting books</small>
                         </div>
                     </div>
                 </div>
 
                 <div class="settings-section">
-                    <h4 class="settings-section-title">Cài đặt vận chuyển</h4>
+                    <h4 class="settings-section-title">Shipping Settings</h4>
                     <div class="form-row">
                         <div class="form-group">
-                            <label>Phí Ship Miễn Phí (VNĐ)</label>
+                            <label>Free Shipping Threshold (VND)</label>
                             <input type="number" class="form-control" value="100000" min="0">
-                            <small class="form-text">Miễn phí ship cho đơn từ giá trị này</small>
+                            <small class="form-text">Free shipping for orders from this value</small>
                         </div>
                         <div class="form-group">
-                            <label>Phí Ship Mặc Định (VNĐ)</label>
+                            <label>Default Shipping Fee (VND)</label>
                             <input type="number" class="form-control" value="20000" min="0">
-                            <small class="form-text">Phí ship cho đơn dưới giá trị miễn phí</small>
+                            <small class="form-text">Shipping fee below the free-shipping threshold</small>
                         </div>
                     </div>
                 </div>
 
                 <div class="form-actions">
                     <button type="button" class="btn btn-outline">
-                        <i class="fas fa-undo"></i> Đặt lại
+                        <i class="fas fa-undo"></i> Reset
                     </button>
                     <button type="submit" class="btn btn-primary">
-                        <i class="fas fa-save"></i> Lưu thay đổi
+                        <i class="fas fa-save"></i> Save Changes
                     </button>
                 </div>
             </form>
@@ -116,13 +116,13 @@ $pageTitle = 'Cài đặt';
         <div class="dashboard-card">
             <div class="dashboard-card-header">
                 <h3 class="dashboard-card-title">
-                    <i class="fas fa-user-cog"></i> Tài Khoản Admin
+                    <i class="fas fa-user-cog"></i> Admin Account
                 </h3>
             </div>
             <div class="dashboard-card-body">
                 <form>
                     <div class="form-group">
-                        <label>Tên Đăng Nhập</label>
+                        <label>Username</label>
                         <input type="text" class="form-control" value="<?php echo htmlspecialchars($user['username'] ?? 'admin'); ?>" disabled>
                     </div>
                     <div class="form-group">
@@ -130,20 +130,20 @@ $pageTitle = 'Cài đặt';
                         <input type="email" class="form-control" value="<?php echo htmlspecialchars($user['email'] ?? 'admin@example.com'); ?>">
                     </div>
                     <div class="form-group">
-                        <label>Họ Tên</label>
+                        <label>Full Name</label>
                         <input type="text" class="form-control" value="<?php echo htmlspecialchars($user['full_name'] ?? 'Admin'); ?>">
                     </div>
                     <div class="form-divider"></div>
                     <div class="form-group">
-                        <label>Đổi Mật Khẩu</label>
-                        <input type="password" class="form-control" placeholder="Mật khẩu mới">
+                        <label>Change Password</label>
+                        <input type="password" class="form-control" placeholder="New password">
                     </div>
                     <div class="form-group">
-                        <label>Xác Nhận Mật Khẩu</label>
-                        <input type="password" class="form-control" placeholder="Xác nhận mật khẩu">
+                        <label>Confirm Password</label>
+                        <input type="password" class="form-control" placeholder="Confirm password">
                     </div>
                     <button type="submit" class="btn btn-primary w-full">
-                        <i class="fas fa-key"></i> Cập Nhật Tài Khoản
+                        <i class="fas fa-key"></i> Update Account
                     </button>
                 </form>
             </div>
@@ -153,27 +153,27 @@ $pageTitle = 'Cài đặt';
         <div class="dashboard-card">
             <div class="dashboard-card-header">
                 <h3 class="dashboard-card-title">
-                        <i class="fas fa-server"></i> Trạng thái hệ thống
-                    </h3>
+                    <i class="fas fa-server"></i> System Status
+                </h3>
             </div>
             <div class="dashboard-card-body">
                 <div class="status-list">
                     <div class="status-item">
                         <div class="status-info">
                             <i class="fas fa-database"></i>
-                            <span>Cơ sở dữ liệu</span>
+                            <span>Database</span>
                         </div>
-                            <span class="badge badge-success">
-                            <i class="fas fa-check-circle"></i> Hoạt động
+                        <span class="badge badge-success">
+                            <i class="fas fa-check-circle"></i> Online
                         </span>
                     </div>
                     <div class="status-item">
                         <div class="status-info">
                             <i class="fas fa-server"></i>
-                            <span>Máy chủ</span>
+                            <span>Server</span>
                         </div>
                         <span class="badge badge-success">
-                            <i class="fas fa-check-circle"></i> Đang chạy
+                            <i class="fas fa-check-circle"></i> Running
                         </span>
                     </div>
                     <div class="status-item">
@@ -182,15 +182,15 @@ $pageTitle = 'Cài đặt';
                             <span>SSL</span>
                         </div>
                         <span class="badge badge-success">
-                            <i class="fas fa-check-circle"></i> Hoạt động
+                            <i class="fas fa-check-circle"></i> Active
                         </span>
                     </div>
                     <div class="status-item">
                         <div class="status-info">
                             <i class="fas fa-clock"></i>
-                            <span>Sao lưu gần nhất</span>
+                            <span>Last Backup</span>
                         </div>
-                        <span class="badge badge-info">Vừa xong</span>
+                        <span class="badge badge-info">Just now</span>
                     </div>
                 </div>
             </div>
