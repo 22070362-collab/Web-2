@@ -2549,3 +2549,28 @@ h1, h2, h3, h4, h5, h6 {
         font-size: 1.5rem;
     }
 }
+
+/* Particle burst used for fly-to-cart */
+.cart-particle {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    pointer-events: none;
+    will-change: transform, opacity;
+}
+
+.heart-particle {
+    will-change: transform, opacity;
+    font-family: 'Playfair Display', serif;
+    text-shadow: 0 2px 6px rgba(0,0,0,0.08);
+}
+
+/* Respect reduced motion for accessibility */
+@media (prefers-reduced-motion: reduce) {
+    * {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+    }
+}
+

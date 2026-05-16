@@ -1,0 +1,180 @@
+/* Impeccable-inspired Editorial Theme - impeccable.css
+   Purpose: Editorial / Refined redesign overrides for core flows
+   Scope: Navbar, Hero, Book Cards, Book Detail, Buttons, Forms
+   Notes: This file is intentionally loaded AFTER style.css to override styles.
+*/
+
+:root {
+  /* Design tokens (Editorial) */
+  --bg-weak: oklch(95% 0.02 250);
+  --bg-strong: oklch(98% 0.01 260);
+  --surface: oklch(98% 0.005 260);
+  --muted: oklch(35% 0.02 270);
+  --text: oklch(12% 0.02 260);
+
+  --accent: #7A1F11; /* deep oxblood */
+  --accent-2: #C27E3A; /* warm gold */
+  --glass: rgba(18,15,13,0.04);
+
+  --radius-sm: 8px;
+  --radius-md: 14px;
+
+  /* Typographic scale (fluid) */
+  --type-base: 1rem;
+  --type-scale-ratio: 1.285; /* modular scale */
+  --fs-0: clamp(0.78rem, calc(0.75rem + 0.25vw), 0.9rem);
+  --fs-1: clamp(0.95rem, calc(0.9rem + 0.3vw), 1rem);
+  --fs-2: clamp(1.125rem, calc(1.05rem + 0.6vw), 1.25rem);
+  --fs-3: clamp(1.5rem, calc(1.3rem + 1.2vw), 2rem);
+  --fs-4: clamp(2rem, calc(1.8rem + 1.8vw), 3.2rem);
+
+  --ease-slow: cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+/* Gentle reset to ensure consistent baseline */
+html,body{background:var(--bg-weak);color:var(--text);}
+body{font-family: 'Be Vietnam Pro', system-ui, -apple-system, 'Segoe UI', 'Helvetica Neue', sans-serif;}
+.container{max-width:1200px;margin:0 auto;padding:0 22px;}
+
+/* Admin banner (replaces inline styles) */
+.admin-banner{margin-top:100px;margin-bottom:-80px;position:relative;z-index:10}
+.admin-banner-inner{background:linear-gradient(145deg,#1e293b,#0f172a);color:white;padding:20px 30px;border-radius:var(--radius-md);display:flex;align-items:center;justify-content:space-between;box-shadow:0 18px 60px rgba(10,10,10,0.12)}
+
+/* Breadcrumb */
+.breadcrumb-section{padding:100px 0 20px;background:var(--bg-strong)}
+.breadcrumb-nav{display:flex;align-items:center;gap:12px;font-size:0.9rem;color:var(--muted)}
+.breadcrumb-nav a{color:var(--muted);text-decoration:none}
+.breadcrumb-sep{font-size:0.7rem;color:var(--muted)}
+.breadcrumb-current{color:var(--text)}
+
+/* Book detail layout helpers */
+.book-detail-image-wrapper{position:relative}
+.book-status{position:absolute;top:16px;left:16px;z-index:10;padding:8px 12px;border-radius:10px;font-weight:700;color:#fff}
+.book-status.available{background:linear-gradient(145deg,var(--accent), #5b160e)}
+.book-status.unavailable{background:linear-gradient(145deg,#6b7280,#4b5563)}
+
+.rental-actions{display:flex;gap:12px}
+.mt-12{margin-top:12px}
+.container-narrow{max-width:960px;margin:0 auto}
+.section-header--spaced{margin-bottom:24px}
+
+/* NAVBAR - refined, minimal */
+.navbar{
+  position:sticky;top:0;backdrop-filter:blur(6px);background:linear-gradient(180deg, rgba(255,255,255,0.7), rgba(255,255,255,0.55));border-bottom:1px solid rgba(18,15,13,0.06);height:80px;padding:0;display:flex;align-items:center;z-index:120;
+}
+.navbar-inner{height:80px;display:flex;align-items:center;gap:18px;}
+.logo{font-weight:800;font-size:1.15rem;letter-spacing:-0.01em;color:var(--accent);}
+.logo-icon{width:48px;height:48px;border-radius:10px;background:linear-gradient(180deg,var(--accent), #5b160e);display:flex;align-items:center;justify-content:center;color:#fff;box-shadow:0 8px 30px rgba(122,31,17,0.12);} 
+
+.nav{gap:8px}
+.nav-link{padding:10px 14px;border-radius:10px;color:var(--muted);font-weight:600}
+.nav-link:hover{color:var(--accent);background:transparent;}
+.nav-link.btn{background:transparent;border:1px solid var(--accent);color:var(--accent);box-shadow:none}
+.nav-link.btn:hover{background:var(--accent);color:#fff}
+
+/* HERO - editorial scale */
+.hero{min-height:580px;padding:68px 0 48px;background:linear-gradient(120deg, var(--bg-strong), var(--bg-weak));display:grid;align-items:center;position:relative;overflow:hidden}
+.hero-content h1{font-family:'Playfair Display', serif;font-size:var(--fs-4);line-height:1.02;font-weight:700;margin:0 0 18px;color:var(--text);max-width:720px}
+.hero-content h1 span{color:var(--accent);}
+.hero p{font-size:var(--fs-2);color:var(--muted);max-width:580px;margin-bottom:22px}
+.hero-buttons .btn{border-radius:12px;padding:12px 20px;font-weight:700}
+.btn-primary{background:var(--accent);color:white;border:0;box-shadow:0 8px 28px rgba(122,31,17,0.12)}
+.btn-outline{background:transparent;border:1px solid rgba(18,15,13,0.06);color:var(--accent)}
+
+.hero-image{position:absolute;right:0;top:8%;width:42%;height:84%;object-fit:cover;border-radius:18px;box-shadow:0 30px 80px rgba(10,10,10,0.08);transform:translateZ(0)}
+
+/* BOOK CARD - editorial, airy */
+.books-grid, .books-grid-4, .books-carousel-track{gap:28px}
+.book-card{background:transparent;border-radius:12px;border:1px solid rgba(18,15,13,0.06);overflow:visible;padding:0;display:flex;flex-direction:column;transition:transform 280ms var(--ease-slow), box-shadow 280ms var(--ease-slow)}
+.book-card:hover{transform:translateY(-8px);box-shadow:0 20px 50px rgba(18,15,13,0.06)}
+.book-image{height:320px;border-radius:10px;overflow:hidden;background:linear-gradient(180deg, #fff 0%, #f8f6f4 100%);}
+.book-image img{width:100%;height:100%;object-fit:cover;display:block;}
+.book-info{padding:18px 16px;background:transparent}
+.book-category{display:inline-block;font-weight:700;color:var(--accent-2);font-size:0.78rem}
+.book-title{font-family:'Playfair Display', serif;font-size:1.05rem;margin:10px 0 6px;color:var(--text);}
+.book-author{font-size:0.9rem;color:var(--muted);}
+.book-price-current{font-weight:800;color:var(--accent);font-size:1.05rem}
+.book-footer{display:flex;justify-content:space-between;align-items:center;padding-top:12px}
+.book-wishlist{opacity:1;background:transparent;border:none;color:var(--muted)}
+
+/* BOOK DETAIL - focus on clarity */
+.book-detail-section{padding:80px 0 120px}
+.book-detail-image{height:660px;border-radius:12px;box-shadow:0 30px 80px rgba(10,10,10,0.06)}
+.book-detail-info h1{font-family:'Playfair Display',serif;font-size:2.4rem;margin-bottom:12px}
+.book-detail-price{font-size:2.2rem;color:var(--accent);font-weight:800}
+.rental-form-box{background:var(--surface);border:1px solid rgba(18,15,13,0.04);padding:22px;border-radius:12px}
+.form-control, select{border:1px solid rgba(18,15,13,0.06);padding:12px;border-radius:8px}
+.form-control:focus{outline:none;box-shadow:0 6px 18px rgba(122,31,17,0.06);border-color:var(--accent)}
+
+/* Utilities & responsive tweaks */
+@media (max-width: 1024px){
+  .hero-image{display:none}
+  .book-image{height:260px}
+  .book-detail-image{height:480px}
+}
+
+@media (max-width: 768px){
+  .navbar{height:68px}
+  .hero{padding:40px 0}
+  .hero-content h1{font-size:1.6rem}
+  .books-grid-4{grid-template-columns:repeat(2,1fr)}
+  .books-carousel-track .book-card{flex:0 0 calc(50% - 12px)}
+}
+
+/* Accessibility: reduced motion (double-check) */
+@media (prefers-reduced-motion: reduce){
+  *{animation-duration:0.01ms!important;transition-duration:0.01ms!important}
+}
+
+/* small polish for headings and micro copy */
+.section-title{font-family:'Playfair Display',serif;font-size:1.6rem;color:var(--text);}
+.section-subtitle{color:var(--muted);}
+
+/* override any heavy shadow from existing style.css */
+.box-shadow-strong{box-shadow:none}
+
+/* Page header tweaks */
+.section-header--no-margin{margin-bottom:0}
+.page-title{font-size:1.6rem;margin:0 0 6px;font-family:'Playfair Display',serif}
+.page-subtitle{margin:0;color:var(--muted);font-size:0.95rem}
+
+/* Filter bar */
+.filter-section{padding:24px 0;background:var(--surface);border-bottom:1px solid rgba(18,15,13,0.04)}
+.filter-bar{display:flex;gap:12px;align-items:center}
+.filter-input{flex:1;padding:12px 16px;border:1px solid rgba(18,15,13,0.06);border-radius:10px;background:#fff;color:var(--text);font-family:inherit}
+.categories-filter{margin-top:16px;display:flex;gap:10px;flex-wrap:wrap}
+.category-pill{display:inline-flex;align-items:center;gap:8px;padding:8px 12px;border-radius:999px;background:transparent;border:1px solid rgba(18,15,13,0.04);color:var(--muted);text-decoration:none}
+.category-pill.active{background:linear-gradient(90deg, rgba(122,31,17,0.08), rgba(194,126,58,0.04));color:var(--accent);border-color:rgba(122,31,17,0.08);font-weight:700}
+
+/* Book discount badges */
+.book-discount{position:absolute;top:12px;right:12px;padding:8px 10px;border-radius:10px;background:linear-gradient(145deg,var(--accent-2),#a86f3f);color:#fff;font-weight:700;font-size:0.85rem}
+.book-discount.unavailable{background:linear-gradient(145deg,#6b7280,#4b5563)}
+.book-discount.available{background:linear-gradient(145deg,var(--accent),#5b160e)}
+
+/* Small utilities */
+.text-muted{color:var(--muted)}
+.small{font-size:0.78rem}
+
+/* Empty state */
+.empty-state{text-align:center;padding:80px 20px}
+.empty-state-icon{width:100px;height:100px;border-radius:50%;display:flex;align-items:center;justify-content:center;margin:0 auto 24px;font-size:2.5rem;background:linear-gradient(145deg, #f3efe9, #e9e6e2);color:var(--accent)}
+
+/* Dropdown profile in header */
+.user-menu{position:relative}
+.dropdown-profile{padding:12px 14px;background:transparent;border-radius:10px;margin-bottom:8px}
+.dropdown-name{font-weight:600;color:var(--text)}
+.dropdown-email{font-size:0.8rem;color:var(--muted)}
+.dropdown-item--danger{color:var(--danger)}
+
+/* Footer & newsletter */
+.footer-newsletter{text-align:center}
+.footer-cta-title{color:var(--text);margin-bottom:8px}
+.newsletter-form{max-width:480px;margin:0 auto;display:flex;gap:8px;justify-content:center}
+.newsletter-form input{padding:10px 12px;border-radius:8px;border:1px solid rgba(18,15,13,0.06)}
+.heart-icon{color:var(--danger)}
+
+/* Section header center utility */
+.section-header--center{justify-content:center;text-align:center;flex-direction:column;align-items:center}
+.text-center{text-align:center}
+.mt-16{margin-top:16px}
+

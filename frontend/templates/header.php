@@ -67,6 +67,7 @@ $currentPage = basename($_SERVER['PHP_SELF']);
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <?php $basePath = strpos($_SERVER['PHP_SELF'], '/admin/') !== false ? '../../' : '../'; ?>
     <link rel="stylesheet" href="<?php echo $basePath; ?>assets/css/style.css?v=<?php echo time(); ?>">
+    <link rel="stylesheet" href="<?php echo $basePath; ?>assets/css/impeccable.css?v=<?php echo time(); ?>">
     <script src="<?php echo $basePath; ?>assets/js/main.js" defer></script>
 </head>
 <body>
@@ -114,15 +115,15 @@ $currentPage = basename($_SERVER['PHP_SELF']);
                             <?php endif; ?>
                         </a>
                         
-                        <div class="user-menu" style="position: relative;">
+                        <div class="user-menu">
                             <div class="user-avatar">
                                 <?php echo strtoupper(substr($user['full_name'] ?? 'U', 0, 1)); ?>
                             </div>
                             <div class="user-dropdown">
                                 <div class="dropdown-content">
-                                    <div style="padding: 12px 14px; background: var(--bg-secondary); border-radius: var(--radius); margin-bottom: 8px;">
-                                        <div style="font-weight: 600; color: var(--text-primary);"><?php echo htmlspecialchars($user['full_name'] ?? 'User'); ?></div>
-                                        <div style="font-size: 0.8rem; color: var(--text-muted);"><?php echo htmlspecialchars($user['email'] ?? ''); ?></div>
+                                    <div class="dropdown-profile">
+                                        <div class="dropdown-name"><?php echo htmlspecialchars($user['full_name'] ?? 'User'); ?></div>
+                                        <div class="dropdown-email"><?php echo htmlspecialchars($user['email'] ?? ''); ?></div>
                                     </div>
                                     <div class="dropdown-divider"></div>
                                     <a href="notifications.php" class="dropdown-item">
