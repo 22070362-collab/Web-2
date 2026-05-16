@@ -1,9 +1,9 @@
     <!-- Newsletter -->
     <section class="newsletter-section">
-        <div class="container" style="text-align: center;">
-            <h2 style="color: var(--text-primary); margin-bottom: 8px;">Đăng ký nhận tin</h2>
-            <p style="margin-bottom: 24px; color: var(--text-secondary);">Nhận thông báo về sách mới và ưu đãi đặc biệt.</p>
-            <form class="newsletter-form" action="#" method="POST" style="max-width: 480px; margin: 0 auto;">
+        <div class="container footer-newsletter">
+            <h2 class="footer-cta-title">Đăng ký nhận tin</h2>
+            <p class="section-subtitle">Nhận thông báo về sách mới và ưu đãi đặc biệt.</p>
+            <form class="newsletter-form" action="#" method="POST">
                 <input type="email" placeholder="Nhập email của bạn" required>
                 <button type="submit"><i class="fas fa-paper-plane"></i></button>
             </form>
@@ -59,7 +59,7 @@
             </div>
             
             <div class="footer-bottom">
-                <p>&copy; <?php echo date('Y'); ?> MÂY MƠ BOOK. Tất cả quyền được bảo lưu. | Được tạo với <i class="fas fa-heart" style="color: var(--danger);"></i> tại Việt Nam</p>
+                <p>&copy; <?php echo date('Y'); ?> MÂY MƠ BOOK. Tất cả quyền được bảo lưu. | Được tạo với <i class="fas fa-heart heart-icon"></i> tại Việt Nam</p>
             </div>
         </div>
     </footer>

@@ -6,14 +6,14 @@ $pageTitle = 'Về Chúng Tôi';
 <!-- Page Header -->
 <section class="page-header">
     <div class="container">
-        <div class="section-header" style="margin-bottom: 0;">
+        <div class="section-header section-header--no-margin">
             <div class="section-header-left">
                 <div class="section-icon">
                     <i class="fas fa-info-circle"></i>
                 </div>
                 <div>
-                    <h1 style="font-size: 2rem; margin-bottom: 4px;">Về MÂY MƠ BOOK</h1>
-                    <p style="margin: 0; color: var(--text-muted);">Câu chuyện của chúng tôi</p>
+                    <h1 class="page-title">Về MÂY MƠ BOOK</h1>
+                    <p class="page-subtitle">Câu chuyện của chúng tôi</p>
                 </div>
             </div>
         </div>
@@ -97,11 +97,11 @@ $pageTitle = 'Về Chúng Tôi';
 <!-- Team Section -->
 <section class="section">
     <div class="container">
-        <div class="section-header" style="justify-content: center; text-align: center; flex-direction: column; align-items: center;">
+        <div class="section-header section-header--center">
             <div class="section-icon">
                 <i class="fas fa-users"></i>
             </div>
-            <div style="text-align: center; margin-top: 16px;">
+            <div class="text-center mt-16">
                 <h2 class="section-title">Đội Ngũ Của Chúng Tôi</h2>
                 <p class="section-subtitle">Những người đam mê sách</p>
             </div>

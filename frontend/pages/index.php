@@ -16,8 +16,8 @@ function getRandomReviews() {
 ?>
 
 <?php if ($isAdmin): ?>
-<div class="container" style="margin-top: 100px; margin-bottom: -80px; position: relative; z-index: 10;">
-    <div style="background: linear-gradient(145deg, #1e293b, #0f172a); color: white; padding: 20px 30px; border-radius: var(--radius-lg); display: flex; align-items: center; justify-content: space-between; box-shadow: var(--shadow-lg);">
+<div class="container admin-banner">
+    <div class="admin-banner-inner">
         <div style="display: flex; align-items: center; gap: 20px;">
             <div style="width: 50px; height: 50px; background: rgba(255,255,255,0.1); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 1.5rem;">
                 <i class="fas fa-user-shield"></i>
@@ -128,7 +128,7 @@ function getRandomReviews() {
         <div class="promo-banner animate-on-scroll">
             <h2>Lễ Hội Đọc Sách Mùa Hè</h2>
             <p>Giảm đến 30% cho tất cả sách Self-help. Chỉ áp dụng đến hết tháng này!</p>
-            <a href="books.php?category=Self-help" class="btn btn-lg" style="background: white; color: var(--blue-primary);">
+            <a href="books.php?category=Self-help" class="btn btn-lg btn-outline">
                 <i class="fas fa-fire"></i> Khám Phá Ngay
             </a>
         </div>
