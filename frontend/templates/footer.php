@@ -30,7 +30,7 @@
                 </div>
                 
                 <div>
-                    <h4>Liên Kết Nhanh</h4>
+                    <h4>Quick Links</h4>
                     <div class="footer-links">
                         <a href="index.php"><i class="fas fa-chevron-right"></i> Trang Chủ</a>
                         <a href="books.php"><i class="fas fa-chevron-right"></i> Sách</a>
@@ -59,7 +59,7 @@
             </div>
             
             <div class="footer-bottom">
-                <p>&copy; <?php echo date('Y'); ?> MÂY MƠ BOOK. Tất cả quyền được bảo lưu. | Được tạo với <i class="fas fa-heart heart-icon"></i> tại Việt Nam</p>
+                <p>&copy; <?php echo date('Y'); ?> MÂY MƠ BOOK. Tất cả quyền được bảo lưu. | Made with <i class="fas fa-heart" style="color: var(--danger);"></i> in Vietnam</p>
             </div>
         </div>
     </footer>

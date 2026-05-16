@@ -126,7 +126,7 @@ function getRandomReviews() {
 <section class="section">
     <div class="container">
         <div class="promo-banner animate-on-scroll">
-            <h2>Lễ Hội Đọc Sách Mùa Hè</h2>
+            <h2>Summer Reading Festival</h2>
             <p>Giảm đến 30% cho tất cả sách Self-help. Chỉ áp dụng đến hết tháng này!</p>
             <a href="books.php?category=Self-help" class="btn btn-lg btn-outline">
                 <i class="fas fa-fire"></i> Khám Phá Ngay

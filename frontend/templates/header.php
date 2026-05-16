@@ -59,11 +59,11 @@ if ($isLoggedIn) {
 $currentPage = basename($_SERVER['PHP_SELF']);
 ?>
 <!DOCTYPE html>
-<html lang="vi">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title><?php echo isset($pageTitle) ? htmlspecialchars($pageTitle) . ' - ' : ''; ?>MÂY MƠ BOOK - Thuê Sách Trực Tuyến</title>
+    <title><?php echo isset($pageTitle) ? htmlspecialchars($pageTitle) . ' - ' : ''; ?>MÂY MƠ BOOK - Online Book Rental</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <?php $basePath = strpos($_SERVER['PHP_SELF'], '/admin/') !== false ? '../../' : '../'; ?>
     <link rel="stylesheet" href="<?php echo $basePath; ?>assets/css/style.css?v=<?php echo time(); ?>">
@@ -83,26 +83,26 @@ $currentPage = basename($_SERVER['PHP_SELF']);
                 
                 <div class="navbar-search">
                     <i class="fas fa-search"></i>
-                    <input type="text" placeholder="Tìm kiếm sách..." onkeypress="if(event.key==='Enter') window.location.href='books.php?search='+this.value">
+                    <input type="text" placeholder="Search books..." onkeypress="if(event.key==='Enter') window.location.href='books.php?search='+this.value">
                 </div>
                 
                 <div class="nav">
                     <a href="index.php" class="nav-link <?php echo $currentPage == 'index.php' ? 'active' : ''; ?>">
-                        <i class="fas fa-home"></i> Trang Chủ
+                        <i class="fas fa-home"></i> Home
                     </a>
                     <a href="books.php" class="nav-link <?php echo $currentPage == 'books.php' ? 'active' : ''; ?>">
-                        <i class="fas fa-book-reader"></i> Thuê Sách
+                        <i class="fas fa-book-reader"></i> Rent Books
                     </a>
                     <a href="about.php" class="nav-link <?php echo $currentPage == 'about.php' ? 'active' : ''; ?>">
-                        <i class="fas fa-info-circle"></i> Giới Thiệu
+                        <i class="fas fa-info-circle"></i> About
                     </a>
                     <a href="contact.php" class="nav-link <?php echo $currentPage == 'contact.php' ? 'active' : ''; ?>">
-                        <i class="fas fa-envelope"></i> Liên Hệ
+                        <i class="fas fa-envelope"></i> Contact
                     </a>
                     
                     <?php if ($isLoggedIn): ?>
                         <a href="cart.php" class="nav-link <?php echo $currentPage == 'cart.php' ? 'active' : ''; ?>">
-                            <i class="fas fa-shopping-cart"></i> Giỏ Hàng
+                            <i class="fas fa-shopping-cart"></i> Cart
                             <?php if ($cartCount > 0): ?>
                             <span class="cart-count"><?php echo $cartCount; ?></span>
                             <?php endif; ?>
@@ -133,30 +133,30 @@ $currentPage = basename($_SERVER['PHP_SELF']);
                                         <?php endif; ?>
                                     </a>
                                     <a href="<?php echo $dashboardPath; ?>" class="dropdown-item">
-                                        <i class="fas fa-th-large"></i> Tổng Quan
+                                        <i class="fas fa-th-large"></i> Dashboard
                                     </a>
                                     <a href="<?php echo $dashboardPath; ?>?tab=rentals" class="dropdown-item">
-                                        <i class="fas fa-book"></i> Sách Đã Thuê
+                                        <i class="fas fa-book"></i> Rented Books
                                     </a>
                                     <?php if ($isAdmin): ?>
                                     <div class="dropdown-divider"></div>
                                     <a href="<?php echo strpos($_SERVER['PHP_SELF'], '/admin/') !== false ? 'index.php' : 'admin/index.php'; ?>" class="dropdown-item">
-                                        <i class="fas fa-shield-alt"></i> Quản Trị
+                                        <i class="fas fa-shield-alt"></i> Admin
                                     </a>
                                     <?php endif; ?>
                                     <div class="dropdown-divider"></div>
-                                    <a href="<?php echo $logoutPath; ?>" class="dropdown-item dropdown-item--danger">
-                                        <i class="fas fa-sign-out-alt"></i> Đăng Xuất
+                                    <a href="<?php echo $logoutPath; ?>" class="dropdown-item" style="color: var(--danger);">
+                                        <i class="fas fa-sign-out-alt"></i> Logout
                                     </a>
                                 </div>
                             </div>
                         </div>
                     <?php else: ?>
                         <a href="<?php echo $loginPath; ?>" class="nav-link">
-                            <i class="fas fa-sign-in-alt"></i> Đăng Nhập
+                            <i class="fas fa-sign-in-alt"></i> Login
                         </a>
                         <a href="<?php echo $registerPath; ?>" class="nav-link btn">
-                            <i class="fas fa-user-plus"></i> Đăng Ký
+                            <i class="fas fa-user-plus"></i> Register
                         </a>
                     <?php endif; ?>
                 </div>

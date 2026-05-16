@@ -259,7 +259,7 @@ $currentTab = $_GET['tab'] ?? 'inbox';
                         </div>
                         <div class="sender-info-text">
                             <span class="sender-name-lg">Hệ thống</span>
-                            <span class="sender-email-lg">Tin tự động</span>
+                            <span class="sender-email-lg">Auto message</span>
                         </div>
                         <?php endif; ?>
                     </div>
