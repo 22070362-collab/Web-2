@@ -238,8 +238,9 @@ foreach ($categories as $cat) {
                     </td>
                     <td>
                         <div class="table-book">
-                            <img src="../../assets/images/<?php echo htmlspecialchars($rental['cover_image'] ?? 'default_book.jpg'); ?>"
+                            <img src="../../assets/images/<?php echo htmlspecialchars($rental['cover_image'] ?? ''); ?>"
                                  alt="" class="table-book-cover"
+                                 onerror="this.src='https://placehold.co/36x48/8B4513/FFF?text=No+Cover'">
                                  onerror="this.src='https://via.placeholder.com/36x48/242424/22c55e?text=B'">
                             <div class="table-book-info">
                                 <div class="table-book-title"><?php echo htmlspecialchars($rental['title']); ?></div>

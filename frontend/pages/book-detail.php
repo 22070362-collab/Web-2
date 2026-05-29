@@ -113,16 +113,16 @@ function getBookCoverLocal($book) {
 ?>
 
 <!-- Breadcrumb -->
-<section style="padding: 100px 0 20px; background: var(--bg-primary);">
+<section class="breadcrumb-section">
     <div class="container">
-        <nav style="display: flex; align-items: center; gap: 12px; font-size: 0.9rem; color: var(--text-muted);">
-            <a href="index.php" style="color: var(--text-muted);">Trang Chủ</a>
-            <i class="fas fa-chevron-right" style="font-size: 0.7rem;"></i>
-            <a href="books.php" style="color: var(--text-muted);">Sách</a>
-            <i class="fas fa-chevron-right" style="font-size: 0.7rem;"></i>
-            <a href="books.php?category=<?php echo urlencode((string)($book['category'] ?? '')); ?>" style="color: var(--text-muted);"><?php echo htmlspecialchars((string)($book['category'] ?? 'Sách')); ?></a>
-            <i class="fas fa-chevron-right" style="font-size: 0.7rem;"></i>
-            <span style="color: var(--text-secondary);"><?php echo htmlspecialchars((string)($book['title'] ?? '')); ?></span>
+        <nav class="breadcrumb-nav">
+            <a href="index.php">Trang Chủ</a>
+            <i class="fas fa-chevron-right breadcrumb-sep"></i>
+            <a href="books.php">Sách</a>
+            <i class="fas fa-chevron-right breadcrumb-sep"></i>
+            <a href="books.php?category=<?php echo urlencode((string)($book['category'] ?? '')); ?>"><?php echo htmlspecialchars((string)($book['category'] ?? 'Sách')); ?></a>
+            <i class="fas fa-chevron-right breadcrumb-sep"></i>
+            <span class="breadcrumb-current"><?php echo htmlspecialchars((string)($book['title'] ?? '')); ?></span>
         </nav>
     </div>
 </section>
@@ -142,16 +142,15 @@ function getBookCoverLocal($book) {
         <div class="book-detail-grid">
             <!-- Book Image -->
             <div class="book-detail-image-wrapper">
-                <?php if ($isAvailable): ?>
-                <span class="book-status available" style="position: absolute; top: 16px; left: 16px; z-index: 10;">Còn Hàng</span>
-                <?php else: ?>
-                <span class="book-status unavailable" style="position: absolute; top: 16px; left: 16px; z-index: 10;">Hết Hàng</span>
-                <?php endif; ?>
+                 <?php if ($isAvailable): ?>
+                 <span class="book-status available">Còn Hàng</span>
+                 <?php else: ?>
+                 <span class="book-status unavailable">Hết Hàng</span>
+                 <?php endif; ?>
                 
-                <img src="<?php echo getBookCoverLocal($book); ?>"
+                 <img src="<?php echo getBookCoverLocal($book); ?>"
                      alt="<?php echo htmlspecialchars($book['title']); ?>"
-                     class="book-detail-image"
-                     style="position: relative;">
+                     class="book-detail-image">
             </div>
             
             <!-- Book Info -->
@@ -245,14 +244,14 @@ function getBookCoverLocal($book) {
                             <span class="rental-total-price" id="total-price"><?php echo number_format($totalPrice, 0); ?>đ</span>
                         </div>
                         
-                        <div style="display: flex; gap: 12px;">
-                            <button type="submit" class="btn btn-primary btn-lg" style="flex: 2;">
+                        <div class="rental-actions">
+                            <button type="submit" class="btn btn-primary btn-lg w-full">
                                 <i class="fas fa-book"></i> Thuê Ngay
                             </button>
                         </div>
                     </form>
                     
-                    <form method="POST" style="margin-top: 12px;">
+                    <form method="POST" class="mt-12">
                         <input type="hidden" name="action" value="add_to_cart">
                         <input type="hidden" name="rental_days" id="rental_days_cart" value="7">
                         <button type="submit" class="btn btn-outline btn-lg w-full">
@@ -280,8 +279,8 @@ function getBookCoverLocal($book) {
 
 <!-- Reviews -->
 <section class="section section-alt">
-    <div class="container" style="max-width: 960px;">
-        <div class="section-header" style="margin-bottom: 24px;">
+    <div class="container container-narrow">
+        <div class="section-header section-header--spaced">
             <div class="section-header-left">
                 <div class="section-icon">
                     <i class="fas fa-star"></i>

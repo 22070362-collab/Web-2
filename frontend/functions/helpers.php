@@ -119,21 +119,19 @@ function calculateLateFee($pricePerDay, $daysOverdue) {
  */
 function getBookCoverImage($book) {
     $coverImage = $book['cover_image'] ?? '';
-
-    // Detect if we're in admin folder
-    $isAdmin = strpos($_SERVER['PHP_SELF'] ?? '', '/admin/') !== false;
-    $basePath = $isAdmin ? '../../assets/images/' : '../assets/images/';
+    $bookId = $book['id'] ?? 0;
+    $bookTitle = $book['title'] ?? 'No Cover';
 
     // If cover_image is set and file exists, use it
     if (!empty($coverImage)) {
         $checkPath = __DIR__ . '/../assets/images/' . $coverImage;
         if (file_exists($checkPath)) {
-            return $basePath . $coverImage;
+            return '../assets/images/' . htmlspecialchars($coverImage, ENT_QUOTES, 'UTF-8');
         }
     }
 
-    // Return default cover
-    return $basePath . 'default_book.jpg';
+    // Fallback: placeholder with book title (works from any page depth)
+    return "https://placehold.co/300x400/8B4513/FFF?text=" . urlencode($bookTitle);
 }
 
 /**
