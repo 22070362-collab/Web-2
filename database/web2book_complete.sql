@@ -4,8 +4,7 @@
 -- =====================================================
 
 -- Tạo database
-DROP DATABASE IF EXISTS web2book;
-CREATE DATABASE web2book CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
+CREATE DATABASE IF NOT EXISTS web2book CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
 USE web2book;
 
 -- =====================================================
@@ -21,12 +20,14 @@ CREATE TABLE users (
     address TEXT DEFAULT '',
     avatar VARCHAR(255) DEFAULT NULL,
     role ENUM('user', 'admin') DEFAULT 'user',
+    remember_token VARCHAR(64) DEFAULT NULL,
     is_verified TINYINT(1) DEFAULT 0,
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
     INDEX idx_username (username),
     INDEX idx_email (email),
-    INDEX idx_role (role)
+    INDEX idx_role (role),
+    INDEX idx_remember_token (remember_token)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- =====================================================
@@ -175,10 +176,11 @@ CREATE TABLE messages (
 
 -- =====================================================
 -- Dữ liệu mẫu - Users
--- Password: password123 (hash bcrypt)
+-- Admin password: admin123
+-- User passwords: password123
 -- =====================================================
 INSERT INTO users (username, email, password, full_name, phone, address, role) VALUES
-('admin', 'admin@maymobook.com', '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', 'Administrator', '0901234567', '123 Admin Street, HCMC', 'admin'),
+('admin', 'admin@maymobook.com', '$2y$10$rjNBlZ3KLFETuk1EpaFRseodZQvvcKkyIc2QPqtxFvnS7Ha/.wkuy', 'Administrator', '0901234567', '123 Admin Street, HCMC', 'admin'),
 ('hung', 'hung@example.com', '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', 'Nguyễn Văn Hùng', '0902345678', '456 User Street, Hanoi', 'user'),
 ('user2', 'user2@example.com', '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', 'Trần Thị B', '0903456789', '789 User Street, Da Nang', 'user');
 

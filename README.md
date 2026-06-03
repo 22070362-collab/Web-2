@@ -92,13 +92,13 @@ define('DB_PASS', ''); // mật khẩu MySQL
 ```
 
 ### 3. Truy cập Website
-- Frontend: `http://localhost/web2book/frontend/pages/index.php`
-- Admin: `http://localhost/web2book/frontend/pages/admin/`
+- Frontend: `http://localhost:8080/web2book/frontend/pages/index.php`
+- Admin: `http://localhost:8080/web2book/frontend/pages/admin/`
 
 ### Tài khoản Demo
 | Vai trò | Username | Password |
 |---------|----------|----------|
-| Admin | admin | password123 |
+| Admin | admin | admin123 |
 | User | hung | password123 |
 
 ## Tính năng chính
@@ -135,4 +135,3 @@ define('DB_PASS', ''); // mật khẩu MySQL
 # Chạy mỗi ngày lúc 9:00 sáng
 0 9 * * * /usr/bin/php /Applications/XAMPP/xamppfiles/htdocs/web2book/backend/cron/send_reminders.php
 ```
-# WEB-2
