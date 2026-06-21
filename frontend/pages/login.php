@@ -94,7 +94,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         
         <div style="margin-top: 24px; padding-top: 20px; border-top: 1px solid var(--border-color); text-align: center; font-size: 0.85rem; color: var(--text-muted);">
             <p style="margin-bottom: 8px;">Tài Khoản Demo:</p>
-            <p style="margin: 0;">Admin: admin / admin123<br>User: user1 / user123</p>
+            <p style="margin: 0;">Admin: admin / admin123<br>Customer: hung / password123</p>
         </div>
     </div>
 </section>
