@@ -40,6 +40,10 @@ if (!$isLoggedIn && isset($_COOKIE['remember_token'])) {
         $isLoggedIn = true;
         $isAdmin = ($rememberUser['role'] === 'admin');
         $user = $rememberUser;
+    } else {
+        // Token không hợp lệ, xóa cookie
+        setcookie('remember_token', '', time() - 3600, '/', '', false, true);
+        unset($_COOKIE['remember_token']);
     }
 }
 
@@ -81,34 +85,34 @@ $currentPage = basename($_SERVER['PHP_SELF']);
                     MÂY MƠ <span>BOOK</span>
                 </a>
                 
-                <nav class="main-nav">
+                <div class="nav-main">
                     <a href="index.php" class="nav-link <?php echo $currentPage == 'index.php' ? 'active' : ''; ?>">
-                        <i class="fas fa-home"></i> Home
+                        <i class="fas fa-home"></i> <span class="nav-text">Home</span>
                     </a>
                     <a href="books.php" class="nav-link <?php echo $currentPage == 'books.php' ? 'active' : ''; ?>">
-                        <i class="fas fa-book-reader"></i> Rent Books
+                        <i class="fas fa-book-reader"></i> <span class="nav-text">Rent Books</span>
                     </a>
                     <a href="about.php" class="nav-link <?php echo $currentPage == 'about.php' ? 'active' : ''; ?>">
-                        <i class="fas fa-info-circle"></i> About
+                        <i class="fas fa-info-circle"></i> <span class="nav-text">About</span>
                     </a>
                     <a href="contact.php" class="nav-link <?php echo $currentPage == 'contact.php' ? 'active' : ''; ?>">
-                        <i class="fas fa-envelope"></i> Contact
+                        <i class="fas fa-envelope"></i> <span class="nav-text">Contact</span>
                     </a>
-                </nav>
-
-                <div class="nav-auth">
+                </div>
+                
+                <div class="nav-actions">
                     <?php if ($isLoggedIn): ?>
-                        <a href="cart.php" class="nav-icon-link <?php echo $currentPage == 'cart.php' ? 'active' : ''; ?>" title="Giỏ hàng">
-                            <i class="fas fa-shopping-cart"></i>
-                            <?php if ($cartCount > 0): ?>
-                            <span class="cart-count"><?php echo $cartCount; ?></span>
-                            <?php endif; ?>
-                        </a>
-                        
-                        <a href="notifications.php" class="nav-icon-link <?php echo $currentPage == 'notifications.php' ? 'active' : ''; ?>" title="Thông báo">
+                        <a href="notifications.php" class="nav-link nav-icon-only <?php echo $currentPage == 'notifications.php' ? 'active' : ''; ?>" title="Thông Báo">
                             <i class="fas fa-bell"></i>
                             <?php if (isset($unreadMessages) && $unreadMessages > 0): ?>
                             <span class="cart-count"><?php echo $unreadMessages; ?></span>
+                            <?php endif; ?>
+                        </a>
+                        
+                        <a href="cart.php" class="nav-link nav-icon-only <?php echo $currentPage == 'cart.php' ? 'active' : ''; ?>" title="Cart">
+                            <i class="fas fa-shopping-cart"></i>
+                            <?php if ($cartCount > 0): ?>
+                            <span class="cart-count"><?php echo $cartCount; ?></span>
                             <?php endif; ?>
                         </a>
                         
