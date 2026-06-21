@@ -15,7 +15,7 @@ class Rental {
 
     public function findById($id) {
         $stmt = $this->db->prepare("
-            SELECT r.*, b.title, b.author, b.category, b.cover_image, b.price_per_day,
+            SELECT r.*, b.title, b.author, b.cover_image, b.price_per_day,
                    u.username, u.full_name, u.email, u.phone
             FROM rentals r
             JOIN books b ON r.book_id = b.id
@@ -28,7 +28,7 @@ class Rental {
 
     public function findByRentalCode($rentalCode) {
         $stmt = $this->db->prepare("
-            SELECT r.*, b.title, b.author, b.category, b.cover_image, b.price_per_day,
+            SELECT r.*, b.title, b.author, b.cover_image, b.price_per_day,
                    u.username, u.full_name, u.email, u.phone
             FROM rentals r
             JOIN books b ON r.book_id = b.id
