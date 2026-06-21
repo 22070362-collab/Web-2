@@ -176,7 +176,6 @@ foreach ($cartItems as $cartItem) {
                                             src="<?php echo cartText(getBookCoverImage($item)); ?>"
                                             alt="<?php echo cartText($item['title'] ?? 'Sách'); ?>"
                                             loading="lazy"
-                                            onerror="this.src='https://placehold.co/120x160/8B4513/FFF?text=No+Cover'"
                                         >
                                     </a>
 
@@ -390,7 +389,7 @@ foreach ($cartItems as $cartItem) {
 .cart-hero-content h1 {
     max-width: 760px;
     margin: 20px 0 18px;
-    font-family: 'Be Vietnam Pro', sans-serif;
+    font-family: 'Playfair Display', Georgia, serif;
     font-size: clamp(3rem, 6vw, 5.45rem);
     line-height: 0.96;
     letter-spacing: -0.06em;
@@ -510,7 +509,7 @@ foreach ($cartItems as $cartItem) {
 
 .cart-empty-card h2 {
     margin: 0 0 10px;
-    font-family: 'Be Vietnam Pro', sans-serif;
+    font-family: 'Playfair Display', Georgia, serif;
     color: var(--cart-ink);
     font-size: clamp(2rem, 4vw, 3.1rem);
     line-height: 1;
