@@ -229,7 +229,6 @@ $latestHistory = array_slice($historyRentals, 0, 4);
                                                 src="<?php echo dashText(getBookCoverImage($rental)); ?>"
                                                 alt="<?php echo dashText($rental['title'] ?? 'Sách'); ?>"
                                                 loading="lazy"
-                                                onerror="this.src='https://placehold.co/120x160/8B4513/FFF?text=No+Cover'"
                                             >
                                         </a>
 
@@ -320,7 +319,6 @@ $latestHistory = array_slice($historyRentals, 0, 4);
                                                 src="<?php echo dashText(getBookCoverImage($rental)); ?>"
                                                 alt="<?php echo dashText($rental['title'] ?? 'Sách'); ?>"
                                                 loading="lazy"
-                                                onerror="this.src='https://placehold.co/60x80/8B4513/FFF?text=No+Cover'"
                                             >
                                         </div>
 
@@ -421,7 +419,7 @@ $latestHistory = array_slice($historyRentals, 0, 4);
 .dash-hero-content h1 {
     max-width: 860px;
     margin: 20px 0 18px;
-    font-family: 'Be Vietnam Pro', sans-serif;
+    font-family: 'Playfair Display', Georgia, serif;
     font-size: clamp(3rem, 6vw, 5.45rem);
     line-height: 0.96;
     letter-spacing: -0.06em;
